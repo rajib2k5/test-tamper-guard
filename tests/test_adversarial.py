@@ -32,12 +32,14 @@ def test_20000_char_line_is_analysed_without_error():
     assert isinstance(analyze_diff(diff), list)
 
 
-def test_50k_line_diff_runs_under_two_seconds():
+def test_50k_line_diff_runs_in_linear_time():
+    # ~0.7 s CPU locally, ~2.1 s on a GitHub runner. The bound catches the quadratic
+    # regressions seen in review (18-160 s), not runner speed.
     diff = _big_test_diff(50000)
     t0 = time.process_time()
     findings = analyze_diff(diff)
     elapsed = time.process_time() - t0
-    assert (elapsed < 2.0, len(findings) > 0) == (True, True), elapsed
+    assert (elapsed < 6.0, len(findings) > 0) == (True, True), elapsed
 
 
 def test_5k_line_diff_runs_under_the_hook_budget_of_one_second():

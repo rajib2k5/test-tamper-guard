@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "Non-test module gains skip_rows, assert_header and a docstring mentioning xfail; no test files touched."
+}

@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-deleted"
+  ],
+  "framework": "pytest",
+  "note": "the whole pytest module for the parser is deleted"
+}

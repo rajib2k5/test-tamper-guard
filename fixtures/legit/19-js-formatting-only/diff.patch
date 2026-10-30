@@ -1,0 +1,21 @@
+diff --git a/src/__tests__/format.test.js b/src/__tests__/format.test.js
+index 3e2ef84..a5ebfcb 100644
+--- a/src/__tests__/format.test.js
++++ b/src/__tests__/format.test.js
+@@ -1,9 +1,11 @@
+-import {formatMoney} from '../format'
++import { formatMoney } from "../format"
+ 
+-test('formats whole dollars', () => {
+-  expect(formatMoney(5)).toBe('$5.00')
++test("formats whole dollars", () => {
++  expect(formatMoney(5)).toBe("$5.00")
+ })
+ 
+-test('formats a large amount with separators', () => {
+-  expect(formatMoney(1234567.891, {separators: true, currency: 'USD'})).toBe('$1,234,567.89')
++test("formats a large amount with separators", () => {
++  expect(
++    formatMoney(1234567.891, { separators: true, currency: "USD" })
++  ).toBe("$1,234,567.89")
+ })

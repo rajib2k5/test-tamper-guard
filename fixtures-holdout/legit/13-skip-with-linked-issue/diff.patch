@@ -1,0 +1,14 @@
+diff --git a/test/backoff.test.js b/test/backoff.test.js
+index 73e9712..78c11ea 100644
+--- a/test/backoff.test.js
++++ b/test/backoff.test.js
+@@ -8,7 +8,8 @@ test('backoff is capped at 30s', () => {
+   expect(backoffMs(20)).toBe(30000);
+ });
+ 
+-test('reconnects after socket drop within timeout', async () => {
++// Flaky on shared CI runners: port 9999 sometimes still bound. Tracked in https://github.com/acme/mdfeed/issues/318
++test.skip('reconnects after socket drop within timeout', async () => {
+   const { connectWithRetry } = require('../ws');
+   await expect(connectWithRetry('ws://localhost:9999', 3)).resolves.toBeDefined();
+ });

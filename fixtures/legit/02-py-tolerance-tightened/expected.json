@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "approx rel tightened from 1e-6 to 1e-9"
+}

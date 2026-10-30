@@ -1,0 +1,22 @@
+diff --git a/src/__tests__/cagr.test.ts b/src/__tests__/cagr.test.ts
+index e7fafd0..a4dca8f 100644
+--- a/src/__tests__/cagr.test.ts
++++ b/src/__tests__/cagr.test.ts
+@@ -2,14 +2,14 @@ import { annualise, cagr } from '../cagr';
+ 
+ describe('cagr', () => {
+   it('doubling in five years', () => {
+-    expect(cagr(100, 200, 5)).toBeCloseTo(0.148698, 6);
++    expect(cagr(100, 200, 5)).toBeCloseTo(0.148698, 1);
+   });
+ 
+   it('flat is zero', () => {
+-    expect(cagr(100, 100, 3)).toBe(0);
++    expect(cagr(100, 100, 3)).toBeCloseTo(0, 0);
+   });
+ 
+   it('annualises monthly returns', () => {
+-    expect(annualise(0.01, 12)).toBeCloseTo(0.126825, 6);
++    expect(annualise(0.01, 12)).toBeCloseTo(0.126825, 1);
+   });
+ });

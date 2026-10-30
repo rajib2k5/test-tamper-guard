@@ -1,0 +1,26 @@
+diff --git a/src/roundLot.js b/src/roundLot.js
+index da111a3..3c77269 100644
+--- a/src/roundLot.js
++++ b/src/roundLot.js
+@@ -1,5 +1,5 @@
+ function roundLot(qty) {
+-  return Math.floor(qty / 100) * 100;
++  return Math.round(qty / 100) * 100;
+ }
+ 
+ module.exports = { roundLot };
+diff --git a/test/roundLot.test.js b/test/roundLot.test.js
+index 33b43b4..f0dc77d 100644
+--- a/test/roundLot.test.js
++++ b/test/roundLot.test.js
+@@ -1,8 +1,8 @@
+ const { roundLot } = require('../roundLot');
+ 
+ describe('roundLot', () => {
+-  test('rounds down to board lot', () => {
+-    expect(roundLot(260)).toBe(200);
++  test('rounds to nearest board lot', () => {
++    expect(roundLot(260)).toBe(300);
+   });
+ 
+   test('exact lot unchanged', () => {

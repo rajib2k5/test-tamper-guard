@@ -1,0 +1,19 @@
+{
+  "name": "test-tamper-guard",
+  "owner": {
+    "name": "Rajib Bahar",
+    "url": "https://github.com/rajib2k5"
+  },
+  "metadata": {
+    "description": "Flag diffs that weaken tests instead of fixing the code."
+  },
+  "plugins": [
+    {
+      "name": "test-tamper-guard",
+      "source": "./",
+      "version": "0.1.0",
+      "category": "development",
+      "description": "Analysis-only PreToolUse hook that asks before edits that weaken tests."
+    }
+  ]
+}

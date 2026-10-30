@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "a weak truthiness assert replaced by an exact comparison plus one more assert"
+}

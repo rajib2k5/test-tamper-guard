@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "test helper renamed and given a status parameter; assert count unchanged"
+}

@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "assert-removed"
+  ],
+  "framework": "pytest",
+  "note": "two of three asserts dropped from a test"
+}

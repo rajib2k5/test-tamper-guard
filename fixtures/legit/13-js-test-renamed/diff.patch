@@ -1,0 +1,13 @@
+diff --git a/src/__tests__/format.test.js b/src/__tests__/format.test.js
+index 1d60a13..bcc20c1 100644
+--- a/src/__tests__/format.test.js
++++ b/src/__tests__/format.test.js
+@@ -4,7 +4,7 @@ test('formats whole dollars', () => {
+   expect(formatMoney(5)).toBe('$5.00');
+ });
+ 
+-test('formats cents', () => {
++test('formats cents with two decimals', () => {
+   expect(formatMoney(5.5)).toBe('$5.50');
+ });
+ 

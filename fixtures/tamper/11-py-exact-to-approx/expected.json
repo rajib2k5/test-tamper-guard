@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "tolerance-loosened"
+  ],
+  "framework": "pytest",
+  "note": "exact == replaced by pytest.approx(abs=1.0)"
+}

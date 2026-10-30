@@ -1,0 +1,12 @@
+diff --git a/tests/test_vol.py b/tests/test_vol.py
+index cd0bb22..d0fcd36 100644
+--- a/tests/test_vol.py
++++ b/tests/test_vol.py
+@@ -13,7 +13,6 @@ from risk.vol import realized_vol
+         ([0.02, 0.02], 12, 0.0),
+         ([0.01], 252, None),
+         ([], 252, None),
+-        ([0.05, -0.03, 0.02, 0.0, -0.01], 52, 0.2175600294468),
+     ],
+ )
+ def test_realized_vol(returns, periods, expected):

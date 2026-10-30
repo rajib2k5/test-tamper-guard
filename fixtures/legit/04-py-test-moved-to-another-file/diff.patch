@@ -1,0 +1,26 @@
+diff --git a/tests/test_cart.py b/tests/test_cart.py
+index cff9ba0..43ee751 100644
+--- a/tests/test_cart.py
++++ b/tests/test_cart.py
+@@ -13,8 +13,3 @@ def test_total_sums_quantities():
+     cart.add("pad", 3.0)
+     assert cart.total() == 9.0
+ 
+-
+-def test_discount_applied():
+-    cart = Cart()
+-    cart.add("pen", 10.0)
+-    assert cart.total(discount=0.1) == 9.0
+diff --git a/tests/test_discounts.py b/tests/test_discounts.py
+new file mode 100644
+index 0000000..b97429b
+--- /dev/null
++++ b/tests/test_discounts.py
+@@ -0,0 +1,7 @@
++from shop.cart import Cart
++
++
++def test_discount_applied():
++    cart = Cart()
++    cart.add("pen", 10.0)
++    assert cart.total(discount=0.1) == 9.0

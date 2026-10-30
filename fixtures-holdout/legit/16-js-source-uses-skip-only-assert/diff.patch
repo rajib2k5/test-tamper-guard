@@ -1,0 +1,18 @@
+diff --git a/src/pager.js b/src/pager.js
+index da5cb7f..b395e92 100644
+--- a/src/pager.js
++++ b/src/pager.js
+@@ -1,5 +1,11 @@
+-function page(items, n, size) {
+-  return items.slice(n * size, (n + 1) * size);
++function assertPositive(n, name) {
++  if (!(n > 0)) throw new RangeError(`${name} must be positive`);
++}
++
++function page(items, n, size, { skip = 0, only = null } = {}) {
++  assertPositive(size, 'size');
++  const rows = only ? items.filter(only) : items;
++  return rows.slice(skip + n * size, skip + (n + 1) * size);
+ }
+ 
+ module.exports = { page };

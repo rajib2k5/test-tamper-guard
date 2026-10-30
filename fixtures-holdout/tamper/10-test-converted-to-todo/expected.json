@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "jest",
+  "note": "Wilder-smoothing test body replaced by test.todo(...), so the failing assertion disappears."
+}

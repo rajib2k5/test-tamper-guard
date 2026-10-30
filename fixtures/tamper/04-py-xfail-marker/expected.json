@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "pytest",
+  "note": "@pytest.mark.xfail added to hide a rounding failure"
+}

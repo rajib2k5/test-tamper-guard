@@ -1,0 +1,13 @@
+diff --git a/src/__tests__/email.test.js b/src/__tests__/email.test.js
+index 0a11182..77276c5 100644
+--- a/src/__tests__/email.test.js
++++ b/src/__tests__/email.test.js
+@@ -1,7 +1,7 @@
+ import { validateEmail } from '../src/email';
+ 
+ describe('validateEmail', () => {
+-  it('accepts a plain address', () => {
++  it.only('accepts a plain address', () => {
+     expect(validateEmail('a@example.com')).toBe(true);
+   });
+ 

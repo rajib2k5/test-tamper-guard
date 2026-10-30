@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "toBeCloseTo digits 0 -> 6 (stricter) and a zero-vol test added."
+}

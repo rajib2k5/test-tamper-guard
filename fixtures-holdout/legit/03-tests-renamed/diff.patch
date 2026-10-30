@@ -1,0 +1,18 @@
+diff --git a/src/__tests__/spread.test.ts b/src/__tests__/spread.test.ts
+index 3a673c8..e125b76 100644
+--- a/src/__tests__/spread.test.ts
++++ b/src/__tests__/spread.test.ts
+@@ -1,11 +1,11 @@
+ import { spreadBps } from '../spread';
+ 
+ describe('spreadBps', () => {
+-  it('works', () => {
++  it('quotes a 2-point spread around 100 as 200 bps', () => {
+     expect(spreadBps(99, 101)).toBeCloseTo(200, 6);
+   });
+ 
+-  it('zero spread', () => {
++  it('returns exactly zero for a locked market', () => {
+     expect(spreadBps(100, 100)).toBe(0);
+   });
+ });

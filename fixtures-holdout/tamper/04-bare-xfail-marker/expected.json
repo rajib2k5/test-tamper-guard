@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "pytest",
+  "note": "Bare @pytest.mark.xfail added to a failing test; no reason, no issue."
+}

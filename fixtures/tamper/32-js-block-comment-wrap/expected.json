@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-commented-out"
+  ],
+  "framework": "jest",
+  "note": "an existing it( block wrapped in /* */ (only the comment markers are added)"
+}

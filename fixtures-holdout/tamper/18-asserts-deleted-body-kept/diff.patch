@@ -1,0 +1,13 @@
+diff --git a/tests/test_book.py b/tests/test_book.py
+index 6a5fffa..25e9155 100644
+--- a/tests/test_book.py
++++ b/tests/test_book.py
+@@ -9,8 +9,6 @@ def test_spread_after_quotes():
+     ob.add("sell", 101.0, 3)
+     assert ob.best_bid() == 99.5
+     assert ob.best_ask() == 100.25
+-    assert ob.spread() == 0.75
+-    assert ob.bids[99.5] == 10
+ 
+ 
+ def test_empty_book_has_no_spread():

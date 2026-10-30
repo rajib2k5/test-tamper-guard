@@ -1,0 +1,13 @@
+diff --git a/test/user.spec.js b/test/user.spec.js
+index 9f68786..5ccd1a7 100644
+--- a/test/user.spec.js
++++ b/test/user.spec.js
+@@ -5,7 +5,7 @@ describe('buildUser', () => {
+     expect(buildUser({ name: 'ada' })).toEqual({
+       name: 'ada',
+       role: 'member',
+-      active: true,
++      active: false,
+     });
+   });
+ });

@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "jest",
+  "note": "it.skip applied to the deep-OTM delta test, which failed because of the polynomial cdf approximation."
+}

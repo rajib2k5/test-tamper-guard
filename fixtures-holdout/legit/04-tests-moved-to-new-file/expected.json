@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "Skew tests moved verbatim from test_core.py to a new test_skew.py; same asserts, same count."
+}

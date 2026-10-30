@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-config-weakened"
+  ],
+  "framework": "pytest",
+  "note": "pytest.ini addopts gains --deselect for the failing test"
+}

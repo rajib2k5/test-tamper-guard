@@ -1,0 +1,11 @@
+diff --git a/src/count.test.ts b/src/count.test.ts
+index 33c668b..47f3853 100644
+--- a/src/count.test.ts
++++ b/src/count.test.ts
+@@ -5,5 +5,5 @@ test('counts words', () => {
+ });
+ 
+ test('average word length', () => {
+-  expect(averageLength('ab abcd')).toBe(3);
++  expect(averageLength('ab abcd')).toBeCloseTo(3, 0);
+ });

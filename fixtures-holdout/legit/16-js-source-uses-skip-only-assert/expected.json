@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "Plain source module adds skip/only options and an assertPositive helper; no test file in the diff."
+}

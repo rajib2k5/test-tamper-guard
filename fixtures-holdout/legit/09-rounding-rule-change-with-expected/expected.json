@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "roundLot switched from floor to round; the 260 case expectation 200 -> 300 changes with it."
+}

@@ -1,0 +1,16 @@
+diff --git a/tests/test_dividends.py b/tests/test_dividends.py
+index 4471e32..dc9334d 100644
+--- a/tests/test_dividends.py
++++ b/tests/test_dividends.py
+@@ -1,8 +1,10 @@
++import pytest
++
+ from fundamentals.dividends import dividend_yield, payout_ratio
+ 
+ 
+ def test_yield():
+-    assert dividend_yield(2.4, 80.0) == 0.03
++    assert dividend_yield(2.4, 80.0) == pytest.approx(0.03, abs=1e-2)
+ 
+ 
+ def test_payout_ratio():

@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "expected-changed"
+  ],
+  "framework": "jest",
+  "note": "one property inside a multi-line toEqual object changed"
+}

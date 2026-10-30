@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "tests/test_ann.py git-mv'd to tests/test_annualize.py with identical content."
+}

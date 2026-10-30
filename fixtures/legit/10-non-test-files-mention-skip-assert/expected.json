@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "source and docs changes that mention skip/assert/it.skip but touch no test file"
+}

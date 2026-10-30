@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "One network-dependent test.skip with an explanatory comment and a GitHub issue URL."
+}

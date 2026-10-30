@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "tolerance-loosened"
+  ],
+  "framework": "jest",
+  "note": "digits argument on its own line of a multi-line toBeCloseTo lowered"
+}

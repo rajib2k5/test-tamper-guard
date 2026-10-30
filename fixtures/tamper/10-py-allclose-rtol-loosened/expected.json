@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "tolerance-loosened"
+  ],
+  "framework": "pytest",
+  "note": "np.testing.assert_allclose rtol raised from 1e-7 to 1e-2"
+}

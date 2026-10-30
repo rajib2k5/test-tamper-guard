@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "approx abs=1e-2 -> 1e-9 and 1e-1 -> 1e-8: stricter, not looser."
+}

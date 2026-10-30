@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "Fee schedule changed (min 1.0 -> 0.35, rate 5bp -> 3bp) and expected values updated in the same diff."
+}

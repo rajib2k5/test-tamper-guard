@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "pytest",
+  "note": "pytest.skip() call inserted at the top of a test body"
+}

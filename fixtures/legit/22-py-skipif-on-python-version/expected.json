@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "a test for a 3.10-only feature gated with skipif(sys.version_info < (3, 10))"
+}

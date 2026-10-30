@@ -1,0 +1,31 @@
+diff --git a/src/__tests__/strings.test.js b/src/__tests__/strings.test.js
+index cf79cef..dcaf06c 100644
+--- a/src/__tests__/strings.test.js
++++ b/src/__tests__/strings.test.js
+@@ -1,13 +1,7 @@
+-import { padLeft, legacyTrim } from '../strings';
++import { padLeft } from '../strings';
+ 
+ describe('padLeft', () => {
+   it('pads', () => {
+     expect(padLeft('a', 3)).toBe('  a');
+   });
+ });
+-
+-describe('legacyTrim', () => {
+-  it('trims both ends', () => {
+-    expect(legacyTrim('  a  ')).toBe('a');
+-  });
+-});
+diff --git a/src/strings.js b/src/strings.js
+index 87d9e4f..c1f4ea1 100644
+--- a/src/strings.js
++++ b/src/strings.js
+@@ -1,7 +1,3 @@
+ export function padLeft(s, n) {
+   return s.padStart(n);
+ }
+-
+-export function legacyTrim(s) {
+-  return s.replace(/^\s+|\s+$/g, '');
+-}

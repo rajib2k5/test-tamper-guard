@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "expected-changed"
+  ],
+  "framework": "pytest",
+  "note": "expected value edited; the only source change is a comment, so no down-grade"
+}

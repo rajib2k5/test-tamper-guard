@@ -1,0 +1,10 @@
+diff --git a/tests/test_invoice.py b/tests/test_invoice.py
+index cd11bed..2692e37 100644
+--- a/tests/test_invoice.py
++++ b/tests/test_invoice.py
+@@ -5,4 +5,4 @@ from billing.invoice import Invoice
+ 
+ def test_total_includes_tax():
+     invoice = Invoice(lines=[(100.0, 1)], tax_rate=0.075)
+-    assert invoice.total() == 107.5
++    assert invoice.total() == pytest.approx(107.5, abs=1.0)

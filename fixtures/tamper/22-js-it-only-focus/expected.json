@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "jest",
+  "note": "it.only focus added, which silences every other test in the file"
+}

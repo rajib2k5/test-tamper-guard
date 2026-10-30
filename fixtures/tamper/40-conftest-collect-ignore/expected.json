@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-config-weakened"
+  ],
+  "framework": "pytest",
+  "note": "conftest.py stops collecting the failing test module"
+}

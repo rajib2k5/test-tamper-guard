@@ -1,0 +1,13 @@
+diff --git a/src/__tests__/email.test.js b/src/__tests__/email.test.js
+index 0a11182..1b670a1 100644
+--- a/src/__tests__/email.test.js
++++ b/src/__tests__/email.test.js
+@@ -12,4 +12,8 @@ describe('validateEmail', () => {
+   it('rejects a missing domain', () => {
+     expect(validateEmail('a@')).toBe(false);
+   });
++
++  it('rejects spaces', () => {
++    expect(validateEmail('a b@example.com')).toBe(false);
++  });
+ });

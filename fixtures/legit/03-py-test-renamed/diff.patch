@@ -1,0 +1,13 @@
+diff --git a/tests/test_cart.py b/tests/test_cart.py
+index cff9ba0..b3b41d4 100644
+--- a/tests/test_cart.py
++++ b/tests/test_cart.py
+@@ -14,7 +14,7 @@ def test_total_sums_quantities():
+     assert cart.total() == 9.0
+ 
+ 
+-def test_discount_applied():
++def test_ten_percent_discount_is_applied():
+     cart = Cart()
+     cart.add("pen", 10.0)
+     assert cart.total(discount=0.1) == 9.0

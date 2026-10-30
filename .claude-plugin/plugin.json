@@ -1,0 +1,13 @@
+{
+  "name": "test-tamper-guard",
+  "version": "0.1.0",
+  "description": "Analysis-only guard: asks before an edit that weakens a test (skip/xfail, loosened tolerance, deleted test, changed expectation). Never edits files or runs your code.",
+  "author": {
+    "name": "Rajib Bahar",
+    "url": "https://github.com/rajib2k5"
+  },
+  "homepage": "https://github.com/rajib2k5/test-tamper-guard",
+  "repository": "https://github.com/rajib2k5/test-tamper-guard",
+  "license": "MIT",
+  "keywords": ["testing", "pytest", "jest", "guard", "hooks"]
+}

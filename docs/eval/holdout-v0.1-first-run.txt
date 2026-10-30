@@ -1,0 +1,53 @@
+fixture                                                             expected  flagged  rules found / expected rules missed
+fixtures-holdout/legit/01-add-new-tests                             legit     no       -
+fixtures-holdout/legit/02-tolerances-tightened                      legit     no       -
+fixtures-holdout/legit/03-tests-renamed                             legit     no       -
+fixtures-holdout/legit/04-tests-moved-to-new-file                   legit     no       -
+fixtures-holdout/legit/05-skipif-with-issue-link                    legit     no       skip-added:low
+fixtures-holdout/legit/06-feature-removed-with-its-tests            legit     no       test-deleted:low
+fixtures-holdout/legit/07-setup-extracted-to-fixture                legit     no       -
+fixtures-holdout/legit/08-fee-schedule-change-source-and-tests      legit     no       expected-changed:low
+fixtures-holdout/legit/09-rounding-rule-change-with-expected        legit     no       expected-changed:low
+fixtures-holdout/legit/10-reflow-and-hoist-constant                 legit     no       -
+fixtures-holdout/legit/11-source-file-with-skip-and-assert-words    legit     no       -
+fixtures-holdout/legit/12-digits-raised-plus-new-test               legit     no       -
+fixtures-holdout/legit/13-skip-with-linked-issue                    legit     yes      skip-added:high  <-- WRONG
+fixtures-holdout/legit/14-collapsed-to-it-each                      legit     yes      test-deleted:high  <-- WRONG
+fixtures-holdout/legit/15-test-file-renamed                         legit     no       -
+fixtures-holdout/legit/16-js-source-uses-skip-only-assert           legit     no       -
+fixtures-holdout/tamper/01-parity-test-removed                      tamper    yes      test-deleted:high
+fixtures-holdout/tamper/02-whole-test-file-deleted                  tamper    yes      test-deleted:high
+fixtures-holdout/tamper/03-parametrize-case-dropped                 tamper    no       -  MISSED: test-deleted  <-- WRONG
+fixtures-holdout/tamper/04-bare-xfail-marker                        tamper    yes      skip-added:high
+fixtures-holdout/tamper/05-skip-call-in-body                        tamper    yes      skip-added:high
+fixtures-holdout/tamper/06-unittest-skip-decorator                  tamper    yes      skip-added:high
+fixtures-holdout/tamper/07-it-skip-added                            tamper    yes      skip-added:high
+fixtures-holdout/tamper/08-describe-skip-block                      tamper    yes      skip-added:high
+fixtures-holdout/tamper/09-it-only-focus                            tamper    yes      skip-added:high
+fixtures-holdout/tamper/10-test-converted-to-todo                   tamper    yes      skip-added:high
+fixtures-holdout/tamper/11-multiline-approx-widened                 tamper    yes      tolerance-loosened:high
+fixtures-holdout/tamper/12-assert-allclose-rtol-widened             tamper    yes      tolerance-loosened:high
+fixtures-holdout/tamper/13-assertalmostequal-loosened               tamper    yes      tolerance-loosened:high
+fixtures-holdout/tamper/14-tobecloseto-digits-lowered               tamper    yes      tolerance-loosened:high
+fixtures-holdout/tamper/15-exact-eq-became-approx                   tamper    yes      tolerance-loosened:high
+fixtures-holdout/tamper/16-expected-edited-to-buggy-output          tamper    yes      expected-changed:medium
+fixtures-holdout/tamper/17-expected-array-edited                    tamper    yes      expected-changed:medium
+fixtures-holdout/tamper/18-asserts-deleted-body-kept                tamper    yes      assert-removed:medium
+fixtures-holdout/tamper/19-expect-replaced-with-tautology           tamper    yes      assert-removed:medium
+fixtures-holdout/tamper/20-test-function-commented-out              tamper    yes      test-commented-out:high,test-deleted:high
+fixtures-holdout/tamper/21-expects-commented-out                    tamper    yes      assert-removed:medium,test-commented-out:high
+fixtures-holdout/tamper/22-unrelated-source-edit-masks-tamper       tamper    yes      expected-changed:low,tolerance-loosened:high  MISSED: expected-changed
+fixtures-holdout/tamper/23-constant-extracted-then-expected-edited  tamper    no       expected-changed:low  MISSED: expected-changed  <-- WRONG
+fixtures-holdout/tamper/24-raises-check-neutered                    tamper    yes      assert-removed:medium
+fixtures-holdout/tamper/25-torch-atol-rtol-widened                  tamper    yes      expected-changed:medium,tolerance-loosened:high
+
+tamper detected: 23/25 (recall 92.0%)
+legit flagged:   2/16 (false-positive rate 12.5%)
+precision:       92.0%
+per-rule recall (hit at severity >= medium):
+  assert-removed       3/3 (100.0%)
+  expected-changed     2/4 (50.0%)
+  skip-added           7/7 (100.0%)
+  test-commented-out   2/2 (100.0%)
+  test-deleted         2/3 (66.7%)
+  tolerance-loosened   7/7 (100.0%)

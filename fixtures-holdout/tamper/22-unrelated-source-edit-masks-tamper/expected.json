@@ -1,0 +1,9 @@
+{
+  "tamper": true,
+  "rules": [
+    "expected-changed",
+    "tolerance-loosened"
+  ],
+  "framework": "pytest",
+  "note": "Source diff is only a log.debug line; test diff changes one expected literal and widens another tolerance."
+}

@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "one test renamed and rewritten in place; its assertion kept"
+}

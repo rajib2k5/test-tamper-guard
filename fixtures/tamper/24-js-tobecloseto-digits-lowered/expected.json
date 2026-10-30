@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "tolerance-loosened"
+  ],
+  "framework": "jest",
+  "note": "toBeCloseTo digits lowered from 5 to 1"
+}

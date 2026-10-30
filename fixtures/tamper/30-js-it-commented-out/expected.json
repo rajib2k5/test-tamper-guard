@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-commented-out"
+  ],
+  "framework": "jest",
+  "note": "a jest it( block commented out line by line with //"
+}

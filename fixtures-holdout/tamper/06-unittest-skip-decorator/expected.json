@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "pytest",
+  "note": "@unittest.skip('broken') added to the middle-tier fee test with no issue reference."
+}

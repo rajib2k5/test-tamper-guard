@@ -1,0 +1,10 @@
+diff --git a/tests/test_stats.py b/tests/test_stats.py
+index 55e9418..aadda91 100644
+--- a/tests/test_stats.py
++++ b/tests/test_stats.py
+@@ -8,4 +8,4 @@ def test_mean():
+ 
+ 
+ def test_stdev_sample():
+-    assert stdev([2, 4, 4, 4, 5, 5, 7, 9]) == pytest.approx(2.138089935, rel=1e-6)
++    assert stdev([2, 4, 4, 4, 5, 5, 7, 9]) == pytest.approx(2.138089935, rel=1e-9)

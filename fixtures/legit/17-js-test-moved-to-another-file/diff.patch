@@ -1,0 +1,23 @@
+diff --git a/src/__tests__/format.negative.test.js b/src/__tests__/format.negative.test.js
+new file mode 100644
+index 0000000..2f07076
+--- /dev/null
++++ b/src/__tests__/format.negative.test.js
+@@ -0,0 +1,5 @@
++import { formatMoney } from '../format';
++
++test('formats negative amounts', () => {
++  expect(formatMoney(-5)).toBe('-$5.00');
++});
+diff --git a/src/__tests__/format.test.js b/src/__tests__/format.test.js
+index 1d60a13..9ac4c32 100644
+--- a/src/__tests__/format.test.js
++++ b/src/__tests__/format.test.js
+@@ -7,7 +7,3 @@ test('formats whole dollars', () => {
+ test('formats cents', () => {
+   expect(formatMoney(5.5)).toBe('$5.50');
+ });
+-
+-test('formats negative amounts', () => {
+-  expect(formatMoney(-5)).toBe('-$5.00');
+-});

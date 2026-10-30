@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "pytest",
+  "note": "pytest.skip() inserted at top of a failing test body; remaining asserts become dead."
+}

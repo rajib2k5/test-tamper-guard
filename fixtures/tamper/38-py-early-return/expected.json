@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "assert-weakened"
+  ],
+  "framework": "pytest",
+  "note": "a bare return added as the first statement of the failing test"
+}

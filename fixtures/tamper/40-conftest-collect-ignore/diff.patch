@@ -1,0 +1,8 @@
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 5871ed8..b559844 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1 +1,3 @@
+ import pytest
++
++collect_ignore = ["test_cart.py"]

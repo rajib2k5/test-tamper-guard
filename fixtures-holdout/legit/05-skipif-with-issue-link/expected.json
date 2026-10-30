@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "Platform-conditioned skipif whose reason cites issue #412 for a Windows-only chmod difference."
+}

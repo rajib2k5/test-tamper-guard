@@ -165,11 +165,12 @@ Accepted by both checks: the `approx`, `rtol`, `atol`, `places`, `delta`, and `t
 Not proven:
 
 - Claude Code shows the "ask" prompt for this plugin's hook. The check could not run Claude Code. The field names match the documentation and the SDK types.
-- The Action shows annotations on a real GitHub runner. The check had no runner.
 - `MultiEdit` input is not in the Claude Code documentation. The hook handles it and does no harm if it is never sent.
 - Plugin hooks load only when the plugin is enabled, and `${CLAUDE_PLUGIN_ROOT}` expands at runtime. We confirmed this from the documentation only.
 
-Each of these four items needs a live run in Claude Code or on a GitHub runner.
+Each of these three items needs a live run in Claude Code.
+
+Confirmed by a live run: the Action ran on a GitHub runner on this repository's PR #1. It created 10 annotations with the correct file, line, and rule.
 
 ## Known limits
 

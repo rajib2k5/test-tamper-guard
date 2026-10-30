@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "expected-changed"
+  ],
+  "framework": "pytest",
+  "note": "expected string changed to match the buggy output, no source change"
+}

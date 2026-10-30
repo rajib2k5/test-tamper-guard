@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-commented-out"
+  ],
+  "framework": "jest",
+  "note": "Both asserts in the constant-series test commented out with a TODO; body left running."
+}

@@ -1,0 +1,16 @@
+diff --git a/tests/test_black_scholes.py b/tests/test_black_scholes.py
+index 3438e0a..3620b78 100644
+--- a/tests/test_black_scholes.py
++++ b/tests/test_black_scholes.py
+@@ -14,11 +14,5 @@ def test_call_deep_itm_approaches_intrinsic():
+     assert price == pytest.approx(100.0, abs=1e-3)
+ 
+ 
+-def test_put_call_parity():
+-    s, k, r, v, t = 120.0, 110.0, 0.03, 0.25, 0.5
+-    lhs = call_price(s, k, r, v, t) - put_price(s, k, r, v, t)
+-    assert lhs == pytest.approx(s - k * math.exp(-r * t), abs=1e-9)
+-
+-
+ def test_put_otm_is_small():
+     assert put_price(150, 100, 0.01, 0.15, 0.25) < 0.01

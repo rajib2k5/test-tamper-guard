@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "tax rate changed in source and the expected value updated with it"
+}

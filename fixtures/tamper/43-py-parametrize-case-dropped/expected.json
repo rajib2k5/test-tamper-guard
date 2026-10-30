@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-deleted"
+  ],
+  "framework": "pytest",
+  "note": "the one failing parametrize case is removed from the table"
+}

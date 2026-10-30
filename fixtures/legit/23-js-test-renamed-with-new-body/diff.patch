@@ -1,0 +1,18 @@
+diff --git a/src/__tests__/request.test.js b/src/__tests__/request.test.js
+index 830f794..68e731c 100644
+--- a/src/__tests__/request.test.js
++++ b/src/__tests__/request.test.js
+@@ -1,10 +1,8 @@
+ import { request } from '../src/request';
+ 
+-test('a fetch that resolves with a non-response throws', async () => {
+-  const server = await startServer();
+-  server.get('/', (req, res) => { res.end('ok'); });
+-  await expect(request(server.url, { fetch: async () => 'nope' })).rejects.toThrow(TypeError);
+-  await server.close();
++test('a non-response from a custom fetch is a TypeError', async () => {
++  const call = request('https://example.com', { fetch: async () => 42 });
++  await expect(call).rejects.toThrow(TypeError);
+ });
+ 
+ test('plain get', async () => {

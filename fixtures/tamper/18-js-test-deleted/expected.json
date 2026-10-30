@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-deleted"
+  ],
+  "framework": "jest",
+  "note": "an it() block for a failing case is deleted"
+}

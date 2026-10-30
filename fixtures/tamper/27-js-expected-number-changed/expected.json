@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "expected-changed"
+  ],
+  "framework": "jest",
+  "note": "toBe(3) changed to toBe(4) with no source change"
+}

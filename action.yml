@@ -1,0 +1,52 @@
+name: test-tamper-guard
+description: Flag pull-request diffs that weaken tests (skips, loosened tolerances, deleted tests, changed expectations). Analysis only.
+author: Rajib Bahar
+inputs:
+  base:
+    description: Base commit SHA of the range. Empty on push events; then the last commit (head~1...head) is checked.
+    default: ${{ github.event.pull_request.base.sha }}
+  head:
+    description: Head commit SHA of the range.
+    default: ${{ github.event.pull_request.head.sha || github.sha }}
+  fail-on:
+    description: Fail the check at this severity or above (high, medium, low, never).
+    default: high
+  python:
+    description: Python 3.9+ interpreter to use.
+    default: python3
+runs:
+  using: composite
+  steps:
+    # The caller must run actions/checkout with `fetch-depth: 0` first, so both
+    # commits of the range exist locally.
+    - name: Run test-tamper-guard
+      shell: bash
+      env:
+        BASE: ${{ inputs.base }}
+        HEAD: ${{ inputs.head }}
+        FAIL_ON: ${{ inputs.fail-on }}
+        PYTHON: ${{ inputs.python }}
+      run: |
+        set -euo pipefail
+        HEAD="${HEAD:-HEAD}"
+        shallow_error() {
+          echo "::error title=test-tamper-guard::$1 is not in this shallow clone, so the range cannot be checked. Run actions/checkout with fetch-depth: 0."
+          exit 2
+        }
+        if [ -z "${BASE:-}" ]; then
+          # Not a pull request (a push): check the last commit only.
+          if git rev-parse --verify --quiet "$HEAD~1^{commit}" >/dev/null; then
+            BASE="$HEAD~1"
+          elif [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+            # Depth 1 hides the parent: this is not a root commit.
+            shallow_error "the parent of $HEAD"
+          else
+            echo "::notice title=test-tamper-guard::no base commit to compare $HEAD with; nothing checked"
+            exit 0
+          fi
+        elif ! git rev-parse --verify --quiet "$BASE^{commit}" >/dev/null \
+            && [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+          shallow_error "the base commit $BASE"
+        fi
+        PYTHONPATH="$GITHUB_ACTION_PATH/src" "$PYTHON" -m test_tamper_guard \
+          --range "$BASE...$HEAD" --format github --fail-on "$FAIL_ON"

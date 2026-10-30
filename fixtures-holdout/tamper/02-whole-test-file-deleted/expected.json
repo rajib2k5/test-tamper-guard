@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-deleted"
+  ],
+  "framework": "jest",
+  "note": "src/__tests__/indicators.test.ts removed entirely while src/indicators.ts is kept."
+}

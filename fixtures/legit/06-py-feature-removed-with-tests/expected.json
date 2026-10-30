@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "parse_v1 removed from source together with its test"
+}

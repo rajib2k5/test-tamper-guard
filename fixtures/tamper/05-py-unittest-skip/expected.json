@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "pytest",
+  "note": "@unittest.skip added to a unittest method"
+}

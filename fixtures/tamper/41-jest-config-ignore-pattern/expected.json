@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-config-weakened"
+  ],
+  "framework": "jest",
+  "note": "jest.config.js ignores the failing test file"
+}

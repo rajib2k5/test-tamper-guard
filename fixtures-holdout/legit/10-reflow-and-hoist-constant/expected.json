@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "Formatter-style reflow of approx() calls and a literal list hoisted to a constant; values and tolerances identical."
+}

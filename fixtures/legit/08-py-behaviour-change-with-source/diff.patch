@@ -1,0 +1,20 @@
+diff --git a/shop/pricing.py b/shop/pricing.py
+index dfdfca0..9b14bd0 100644
+--- a/shop/pricing.py
++++ b/shop/pricing.py
+@@ -1,4 +1,4 @@
+-TAX_RATE = 0.08
++TAX_RATE = 0.10
+ 
+ 
+ def price_with_tax(amount):
+diff --git a/tests/test_pricing.py b/tests/test_pricing.py
+index 7b9345d..090ea16 100644
+--- a/tests/test_pricing.py
++++ b/tests/test_pricing.py
+@@ -2,4 +2,4 @@ from shop.pricing import price_with_tax
+ 
+ 
+ def test_price_with_tax():
+-    assert price_with_tax(100) == 108.0
++    assert price_with_tax(100) == 110.0

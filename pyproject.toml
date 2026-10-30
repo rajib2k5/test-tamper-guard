@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "test-tamper-guard"
+version = "0.1.0"
+description = "Flag diffs that weaken tests instead of fixing the code."
+readme = { text = "Flag diffs that weaken tests instead of fixing the code.", content-type = "text/plain" }
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+test-tamper-guard = "test_tamper_guard.cli:main"
+
+[dependency-groups]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]

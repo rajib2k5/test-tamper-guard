@@ -1,0 +1,23 @@
+diff --git a/etl/loader.py b/etl/loader.py
+index d44c852..8210593 100644
+--- a/etl/loader.py
++++ b/etl/loader.py
+@@ -1,2 +1,16 @@
+-def read_rows(lines):
+-    return [l.strip().split(",") for l in lines]
++def assert_header(row, expected):
++    if row != expected:
++        raise ValueError(f"bad header: {row!r}")
++
++
++def read_rows(lines, skip_rows=0, skip_blank=True):
++    """Parse CSV-ish lines. skip_rows drops leading lines; xfail-style
++    placeholders like '--' are kept as-is."""
++    out = []
++    for i, line in enumerate(lines):
++        if i < skip_rows:
++            continue
++        if skip_blank and not line.strip():
++            continue
++        out.append(line.strip().split(","))
++    return out

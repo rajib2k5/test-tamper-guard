@@ -1,0 +1,24 @@
+diff --git a/tests/test_commission.py b/tests/test_commission.py
+index edfb1ce..ebb5227 100644
+--- a/tests/test_commission.py
++++ b/tests/test_commission.py
+@@ -4,8 +4,8 @@ from trading.commission import commission
+ 
+ 
+ def test_minimum_commission():
+-    assert commission(10, 5.0) == 1.0
++    assert commission(10, 5.0) == 0.35
+ 
+ 
+ def test_proportional_commission():
+-    assert commission(1000, 50.0) == pytest.approx(25.0)
++    assert commission(1000, 50.0) == pytest.approx(15.0)
+diff --git a/trading/commission.py b/trading/commission.py
+index e522cbd..d495656 100644
+--- a/trading/commission.py
++++ b/trading/commission.py
+@@ -1,3 +1,3 @@
+ def commission(shares, price):
+     gross = shares * price
+-    return max(1.0, gross * 0.0005)
++    return max(0.35, gross * 0.0003)

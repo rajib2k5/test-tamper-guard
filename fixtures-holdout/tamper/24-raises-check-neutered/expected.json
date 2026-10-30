@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "assert-removed"
+  ],
+  "framework": "pytest",
+  "note": "pytest.raises(ValueError) replaced by try/except pass plus assert True; ZeroDivisionError now passes."
+}

@@ -1,0 +1,4 @@
+diff --git a/tests/test_ann.py b/tests/test_annualize.py
+similarity index 100%
+rename from tests/test_ann.py
+rename to tests/test_annualize.py

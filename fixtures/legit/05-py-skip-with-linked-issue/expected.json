@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "skip marker whose reason links the tracking issue"
+}

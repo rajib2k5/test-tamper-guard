@@ -1,0 +1,12 @@
+diff --git a/tests/test_config.py b/tests/test_config.py
+index 18dd55e..f7bab97 100644
+--- a/tests/test_config.py
++++ b/tests/test_config.py
+@@ -4,6 +4,6 @@ from app.config import load_defaults
+ def test_defaults():
+     assert load_defaults() == {
+         "retries": 3,
+-        "timeout": 30,
++        "timeout": 0,
+         "verbose": False,
+     }

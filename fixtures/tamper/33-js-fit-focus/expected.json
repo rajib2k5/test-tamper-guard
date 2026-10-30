@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "jest",
+  "note": "it( changed to fit( (jasmine-style focus)"
+}

@@ -1,0 +1,41 @@
+diff --git a/tests/test_core.py b/tests/test_core.py
+index 6274c04..3c1bd44 100644
+--- a/tests/test_core.py
++++ b/tests/test_core.py
+@@ -1,6 +1,4 @@
+-import pytest
+-
+-from stats.core import skew, zscore
++from stats.core import zscore
+ 
+ 
+ def test_zscore_basic():
+@@ -9,11 +7,3 @@ def test_zscore_basic():
+ 
+ def test_zscore_negative():
+     assert zscore(7, 10, 2) == -1.5
+-
+-
+-def test_skew_symmetric_is_zero():
+-    assert skew([-2.0, -1.0, 0.0, 1.0, 2.0]) == pytest.approx(0.0, abs=1e-12)
+-
+-
+-def test_skew_right_tail_positive():
+-    assert skew([1.0, 1.0, 1.0, 1.0, 10.0]) > 1.0
+diff --git a/tests/test_skew.py b/tests/test_skew.py
+new file mode 100644
+index 0000000..c53ce95
+--- /dev/null
++++ b/tests/test_skew.py
+@@ -0,0 +1,11 @@
++import pytest
++
++from stats.core import skew
++
++
++def test_skew_symmetric_is_zero():
++    assert skew([-2.0, -1.0, 0.0, 1.0, 2.0]) == pytest.approx(0.0, abs=1e-12)
++
++
++def test_skew_right_tail_positive():
++    assert skew([1.0, 1.0, 1.0, 1.0, 10.0]) > 1.0

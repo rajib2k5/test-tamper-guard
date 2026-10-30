@@ -1,0 +1,222 @@
+# test-tamper-guard v0.1 (after review round 2): false positives on real history
+#
+# Command: python3 -I scripts/eval_history.py <clone> -n 100   (2026-10-30)
+# Clones: fresh `git clone --depth 200 --no-checkout` (no repo code run). click's first-parent chain
+# inside depth 200 holds only 80 non-merge commits; one of them is the shallow boundary and is skipped.
+# Every flagged commit below was read; the judgement is whether the flag points at test tampering.
+# TP = the change weakens a test in a way the commit does not justify; FP = a legitimate change.
+# ky uses AVA (t.is / t.throwsAsync), as does got; AVA is out of scope for v0.1, so ky's history
+# exercises only test-deleted and does not measure the JS assert rules at all.
+
+=================================================================== click
+repo click HEAD 2247b35ea1c47c727d7a06e51fa280e12a863ff6
+c3535905c77a29afc84861b29d3ad366ce5451bd Fix broken fish completion and multiline help string
+    high test-deleted tests/test_shell_completion.py:582 test 'test_fish_multiline_help_complete' removed and not re-added anywhere in the diff
+831c8f0948af519e45b90801d7430ff25451f972 Add NoSuchCommand exception with suggestions for misspelled commands (#3
+    medium expected-changed tests/test_options.py:144 expected value changed from 'No such option: {unknown_flag}' to "No such option '{unknown_flag}'." with the as
+    medium expected-changed tests/test_options.py:150 expected value changed from 'Did you mean --count?' to "Did you mean '--count'?" with the assertion otherwise 
+2468b70997a6ec27ced4b4867954c90da3f92075 Fix readline backspace/line-wrapping on linux (#2969)
+    high skip-added tests/test_utils.py:232 added skip marker pytest.mark.skipif without a linked issue
+4ece17a107d7b2e8bc3bd14356c2b53038fe41cf Expand `Choice` token normalization + make generic (#2796)
+    medium expected-changed tests/test_normalization.py:32 expected value changed from 'Foo\\n' to 'snake_case\\n' with the assertion otherwise unchanged
+5961d31fb566f089ad468a5b26a32f1ebfa7f63e Introduce Parameter.deprecated + Command.deprecated message customizatio
+    medium expected-changed tests/test_commands.py:328 expected value changed from '(Deprecated)' to '(DEPRECATED' with the assertion otherwise unchanged
+d8763b93021c416549b5f8b4b5497234619410db Help shown via no_args_is_help results in exit code 2, was 0 (#1489)
+    medium expected-changed tests/test_commands.py:100 expected value changed from 0.0 to 2.0 with the assertion otherwise unchanged
+0e0c00324a5af35f8995c7ff88df67b0f5594a58 Keep track of `<stderr>` and `<stdout>` mix in `CliRunner` results (#252
+    medium assert-removed tests/test_testing.py:311 7 assertion(s) removed, 3 added (net loss 4)
+commits flagged: 7/79 (8.9%)
+# skipped (parent not in this clone): 1
+# findings >= medium by rule: assert-removed 1, expected-changed 5, skip-added 1, test-deleted 1
+
+=================================================================== pydantic-settings
+repo pydantic-settings HEAD 94150a0d24967026724031a08e6949b9849df3c5
+7e2dacb6db07b41abb0c80d0608e46e197265554 Fix CliApp reconstruction of AliasPath inputs (#1096)
+    high skip-added tests/test_source_cli.py:5346 added skip marker pytest.mark.skipif without a linked issue
+e9588aefb8a2fafa7fe7868a5aa54f24458b7497 Fix regressions from nested dict union value decoding (#1089) (#1097)
+    medium assert-removed tests/test_settings.py:4490 1 assertion(s) removed, 0 added (net loss 1)
+d357d7bf3183d4c658afa266acb4c3c7cdd6be0e Reach 100% test coverage (#963)
+    high skip-added tests/test_source_yaml.py:379 added skip marker pytest.mark.skipif without a linked issue
+    high skip-added tests/test_source_yaml.py:397 added skip marker pytest.mark.skipif without a linked issue
+12cdb0a3d25bd19210b5cd4a5ba3a14439069cea fix: read JSON and YAML config as UTF-8, not the locale encoding (#955)
+    high skip-added tests/test_source_yaml.py:711 added skip marker pytest.mark.skipif without a linked issue
+    high skip-added tests/test_source_yaml.py:744 added skip marker pytest.mark.skipif without a linked issue
+d26fc0c3944fe68cf169f86386988bb83e3df2d8 Add an AWS Systems Manager Parameter Store settings source (#941)
+    high skip-added tests/test_source_aws_systems_manager.py:35 added skip marker pytest.skip without a linked issue
+    high skip-added tests/test_source_aws_systems_manager.py:38 added skip marker pytest.mark.skipif without a linked issue
+55e9a4dc542d93f16c964ac172cc10dcaad97eb1 Add env_file_depth for parent directory env file lookup (#940)
+    medium expected-changed tests/test_settings.py:2455 expected value changed from "DotEnvSettingsSource(env_file='.env', env_file_encoding='utf-8', env_nested_delim
+bf443bd04abd648f3ede068f877d3366ac1713af fix: coerce empty yaml_config_section to an empty mapping instead of cra
+    high skip-added tests/test_source_yaml.py:471 added skip marker pytest.mark.skipif without a linked issue
+    high skip-added tests/test_source_yaml.py:497 added skip marker pytest.mark.skipif without a linked issue
+commits flagged: 7/100 (7.0%)
+# findings >= medium by rule: assert-removed 1, expected-changed 1, skip-added 9
+
+=================================================================== ky
+repo ky HEAD 3541888878c4d303a8bc2ad61815f4e048f55a5d
+7f0137dc42bbebc8652649a8139065c0dd4dff0b Report the sent request for a hook's response, and finish the cross-real
+    high test-deleted test/retry.ts:5147 test 'a falsy `ky.retry({code})` still appears in the ForceRetryError message' removed and not re-added anywhe
+13c8da559c940c4abd9c741a56ea4603c25a0383 Stop surfacing progress callback errors
+    high test-deleted test/response-size.ts:571 test 'a response that cannot be decorated releases its body' removed and not re-added anywhere in the diff
+    high test-deleted test/stream.ts:1217 test 'a throwing upload progress callback is not retried as a network error' removed and not re-added anywhere
+    high test-deleted test/stream.ts:1239 test 'a throwing upload progress callback is visible to beforeError hooks' removed and not re-added anywhere i
+    high test-deleted test/stream.ts:1525 test 'download progress stays silent for a null body status' removed and not re-added anywhere in the diff
+    high test-deleted test/stream.ts:1558 test 'a throwing upload progress callback is not retried even when `shouldRetry` returns true' removed and not
+    high test-deleted test/stream.ts:1588 test 'a non-Error throw from an upload progress callback is not retried either' removed and not re-added anywh
+    high test-deleted test/type-guards.ts:112 test 'a branded HTTPError without a response is not retried as an HTTPError' removed and not re-added anywhere
+3ded2aad45a1ef06eef5a91e3d853dd056376bf6 Tweaks
+    high test-deleted test/fetch.ts:942 test 'a custom fetch that resolves with a value that is not a response produces an HTTPError' removed and not 
+    high test-deleted test/hooks.ts:6936 test 'an `init` hook that assigns `json` hands later hooks a copy' removed and not re-added anywhere in the di
+    high test-deleted test/hooks.ts:7004 test 'an `init` hook that assigns `retry` hands later hooks a copy' removed and not re-added anywhere in the d
+33462fcbf8f9001fc3d7a08576992098e571c5ff Reject a nullish hook list instead of treating it as absent
+    high test-deleted test/hooks.ts:7323 test '`hooks: null` selects the default' removed and not re-added anywhere in the diff
+6b6756935c2d62897c89eaeb79cc30bc8cf1f5da Validate the callbacks and the input
+    high test-deleted test/response-consumption.ts:263 test 'a server that only serves a parseable media type does not reject the shortcut' removed and not re-added 
+    high test-deleted test/stream.ts:1466 test 'download progress completes for a HEAD response with ${label}' removed and not re-added anywhere in the 
+83c711cb7f051beb4533a601d54f28eeb0ad1eb3 Detect request stream support in Bun and Deno, and cover the pipeline wi
+    high test-deleted test/abort-retry.ts:50 test file deleted (2 test(s) not re-added: a late shouldRetry ${approval} decision preserves cancellation afte
+    high test-deleted test/body-regressions.ts:21 test file deleted (1 test(s) not re-added: completed FormData upload progress uses the actual serialized size)
+    high test-deleted test/fetch.ts:61 test 'shared request body remains readable through ${wrapper}' removed and not re-added anywhere in the diff
+    high test-deleted test/fetch.ts:92 test 'the caller can cancel a response sharing a streaming request body' removed and not re-added anywhere in 
+    high test-deleted test/forced-retry-body.ts:5 test file deleted (1 test(s) not re-added: forced POST retry preserves each complete body with streaming ${str
+    high test-deleted test/option-regressions.ts:56 test file deleted (1 test(s) not re-added: extend callback cannot change parent tuple search parameters)
+    high test-deleted test/retry-request-body.ts:4 test file deleted (1 test(s) not re-added: retry after fetch failure preserves the streaming request body)
+    high test-deleted test/retry.ts:407 test 'shouldRetry true preserves Retry-After timing' removed and not re-added anywhere in the diff
+    high test-deleted test/retry.ts:4145 test 'beforeError receives a user abort during a shortcut body read' removed and not re-added anywhere in the 
+    high test-deleted test/upload-cleanup.ts:5 test file deleted (1 test(s) not re-added: the first attempt does not inspect the request body for previous up
+commits flagged: 6/100 (6.0%)
+# findings >= medium by rule: test-deleted 24
+
+=================================================================== httpx
+repo httpx HEAD b5addb64f0161ff6bfe94c124ef76f6a1fba5254
+eeb5e3c2a3ff2403ec47b5926715ecd61143d92d Cleanup unneccessary test case (#3375)
+    high test-deleted tests/client/test_auth.py:277 test 'test_netrc_auth_nopassword' removed and not re-added anywhere in the diff
+5dda2aa30692e8529555f57efa7bcd203a7d5ac1 Just use default `safe=...` characters for `urlescape` (#3376)
+    medium expected-changed tests/models/test_url.py:151 expected value changed from '/?a=b+c&d=e/f' to '/?a=b+c&d=e%2Ff' with the assertion otherwise unchanged
+    medium expected-changed tests/models/test_url.py:312 expected value changed from 'http://webservice?u=http://example.com?q%3Dfoo%252Fa' to 'http://webservice?u=htt
+ba2e51215e4e619540f2a24282b84ed8a738e6fd Review urlescape percent-safe set, and use + behavior for form spaces. (
+    medium expected-changed tests/models/test_url.py:151 expected value changed from '/?a=b%20c&d=e%2Ff' to '/?a=b+c&d=e/f' with the assertion otherwise unchanged
+    medium expected-changed tests/models/test_url.py:290 expected value changed from 'http://webservice?u=with%20spaces' to 'http://webservice?u=with+spaces' with the 
+    medium expected-changed tests/models/test_url.py:312 expected value changed from 'http://webservice?u=http%3A%2F%2Fexample.com%3Fq%3Dfoo%252Fa' to 'http://webservi
+d293374b6603816420a2bb8e7f4fe5a5f09cbfcc Review URL percent escaping sets, from whatwg. (#3371)
+    medium expected-changed tests/models/test_url.py:617 expected value changed from 'https://tom%40example.org:abc123%40%20%25@example.org' to 'https://tom%40example.
+    medium expected-changed tests/models/test_url.py:620 expected value changed from 'tom%40example.org:abc123%40%20%25' to 'tom%40example.org:abc123%40%20%' with the 
+9fd6f0ca6616d0310a3ee0b0c6ef509a97995797 Ensure JSON representation is compact. #3363 (#3367)
+    medium expected-changed tests/client/test_auth.py:746 expected value changed from '{"auth": "xyz"}' to '{"auth":"xyz"}' with the assertion otherwise unchanged
+    medium expected-changed tests/client/test_auth.py:762 expected value changed from '{"auth": "xyz"}' to '{"auth":"xyz"}' with the assertion otherwise unchanged
+    medium expected-changed tests/models/test_requests.py:65 expected value changed from '{"test": 123}' to '{"test":123}' with the assertion otherwise unchanged
+    medium expected-changed tests/models/test_requests.py:74 expected value changed from '13' to '12' with the assertion otherwise unchanged
+    medium expected-changed tests/models/test_requests.py:186 expected value changed from '{"test": 123}' to '{"test":123}' with the assertion otherwise unchanged
+    medium expected-changed tests/models/test_requests.py:191 expected value changed from '13' to '12' with the assertion otherwise unchanged
+    medium expected-changed tests/models/test_responses.py:86 expected value changed from '18' to '17' with the assertion otherwise unchanged
+8e36f2bc685dfbe43cd7503bc1c422a6ed6e05a5 Introduce new `SSLContext` API & escalate deprecations. (#3319)
+    high test-deleted tests/client/test_proxies.py:35 test 'test_proxies_parameter' removed and not re-added anywhere in the diff
+    high test-deleted tests/client/test_proxies.py:51 test 'test_socks_proxy_deprecated' removed and not re-added anywhere in the diff
+    medium assert-removed tests/client/test_proxies.py:142 5 assertion(s) removed, 1 added (net loss 4)
+    high test-deleted tests/client/test_proxies.py:178 test 'test_unsupported_proxy_scheme_deprecated' removed and not re-added anywhere in the diff
+    high test-deleted tests/client/test_proxies.py:319 test 'test_proxy_and_proxies_together' removed and not re-added anywhere in the diff
+    high test-deleted tests/test_asgi.py:228 test 'test_deprecated_shortcut' removed and not re-added anywhere in the diff
+    high test-deleted tests/test_config.py:29 test 'test_load_ssl_config_verify_env_file' removed and not re-added anywhere in the diff
+    high test-deleted tests/test_config.py:89 test 'test_load_ssl_context' removed and not re-added anywhere in the diff
+    high test-deleted tests/test_config.py:96 test 'test_create_ssl_context_with_get_request' removed and not re-added anywhere in the diff
+    high test-deleted tests/test_config.py:181 test 'test_ssl_config_support_for_keylog_file' removed and not re-added anywhere in the diff
+    high test-deleted tests/test_wsgi.py:206 test 'test_deprecated_shortcut' removed and not re-added anywhere in the diff
+db9072f998b53ff66d50778bf5edee8e2cc8ede1 Add URL parsing tests from WHATWG (#3188)
+    medium expected-changed tests/models/test_url.py:234 expected value changed from 'exam%25le.com' to 'exam%20le.com' with the assertion otherwise unchanged
+a7092af2fda78d92daaad7627e4cf0cf5e94b019 Resolve queryparam quoting (#3187)
+    medium expected-changed tests/models/test_url.py:308 expected value changed from 'http://webservice?u=with%20spaces' to 'http://webservice?u=with%2520spaces' with 
+392dbe45f086d0877bd288c5d68abf860653b680 Add support for zstd decoding (#3139)
+    medium expected-changed tests/client/test_client.py:360 expected value changed from 'gzip, deflate, br' to 'gzip, deflate, br, zstd' with the assertion otherwise unch
+    medium expected-changed tests/client/test_headers.py:37 expected value changed from 'gzip, deflate, br' to 'gzip, deflate, br, zstd' with the assertion otherwise unch
+    medium expected-changed tests/client/test_headers.py:59 expected value changed from 'gzip, deflate, br' to 'gzip, deflate, br, zstd' with the assertion otherwise unch
+    medium expected-changed tests/client/test_headers.py:81 expected value changed from 'gzip, deflate, br' to 'gzip, deflate, br, zstd' with the assertion otherwise unch
+    medium expected-changed tests/client/test_headers.py:103 expected value changed from 'gzip, deflate, br' to 'gzip, deflate, br, zstd' with the assertion otherwise unch
+    medium expected-changed tests/client/test_headers.py:114 expected value changed from 'gzip, deflate, br' to 'gzip, deflate, br, zstd' with the assertion otherwise unch
+    medium expected-changed tests/client/test_headers.py:167 expected value changed from 'gzip, deflate, br' to 'gzip, deflate, br, zstd' with the assertion otherwise unch
+    medium expected-changed tests/client/test_headers.py:195 expected value changed from 'gzip, deflate, br' to 'gzip, deflate, br, zstd' with the assertion otherwise unch
+    medium expected-changed tests/client/test_headers.py:218 expected value changed from 'gzip, deflate, br' to 'gzip, deflate, br, zstd' with the assertion otherwise unch
+0006ed0547f8f8a3cbe2edf758e996c3c73b5e7d format (#3131)
+    medium expected-changed tests/test_multipart.py:466 expected value changed from 'filename="hello%1A\\x1B%1C"' to 'filename="hello%1A\\x1b%1C"' with the assertion 
+commits flagged: 10/100 (10.0%)
+# findings >= medium by rule: assert-removed 1, expected-changed 26, test-deleted 11
+
+=================================================================== vitest
+repo vitest HEAD 54a2bdb81364b85d4b321a1f41c07dd51bfbe53f
+77a94328a9cafc93f3fa7b6ba86fa63705f7fe6a fix: show attempts in test error logs of retried tests (#11696)
+    medium expected-changed test/browser/specs/failure-screenshot.test.ts:142 expected value changed from ' FAIL  |chromium| basic.test.ts > repeated AssertionError: expected 1 to be 10 //
+34b44a36641c064ffedea7991e921336ceca27c6 test(ui): disable virtualization in e2e by default (#11664)
+    high test-deleted test/ui/test/ui.spec.ts:32 test 'test.use({ viewport: { width: 800, height: 1600 } })' removed and not re-added anywhere in the diff
+    medium assert-removed test/ui/test/ui.spec.ts:195 3 assertion(s) removed, 2 added (net loss 1)
+08bd93b7ec007f6d0b0622943ddbc5eb394aa434 feat: introduce `--since-last-run` flag (#11516)
+    medium expected-changed test/e2e/test/recorded-deps.test.ts:318 expected value changed from ' { "": {}, } ' to ' { "": { "<config>": [ "vitest.config.js", ], }, } ' with the 
+    medium expected-changed test/e2e/test/recorded-deps.test.ts:516 expected value changed from ' { "": { "a.test.js": [ "a.test.js", "environment.js", "src/environment-helper.js
+707f8adf4bdaffd508e3023e8b44ba1ceafa737f feat(browser): mock modules through an import map (#11534)
+    high test-deleted test/browser/specs/mocking.test.ts:110 test 'mocks from a setup file apply to static imports of a test file' removed and not re-added anywhere in the
+    medium assert-weakened test/browser/specs/mocking.test.ts:152 .not added to an existing expect
+a2ec4166dbafd9d2897df259de4b8d146c59cc6a fix(browser): change default port to 23315 (#11640)
+    medium expected-changed test/browser/specs/browser-multiple.test.ts:30 expected value changed from 'http://localhost:63315/' to 'http://localhost:23315/' with the assertion otherwis
+    medium expected-changed test/browser/specs/browser-multiple.test.ts:31 expected value changed from 'http://localhost:63316/' to 'http://localhost:23316/' with the assertion otherwis
+de5af2939099c448ba179341debf7d376fd9fdc5 fix(coverage): v8 `autoAttachSubprocess` to use `.tmp` directory (#11632
+    medium assert-removed test/coverage-test/test/temporary-files.test.ts:15 2 assertion(s) removed, 0 added (net loss 2)
+14921e96253cf5ae460ad3d62c44deb1f78f5f2b fix: handle quoted file names in `--changed` (#11583)
+    medium expected-changed test/e2e/test/git-changed.test.ts:72 expected value changed from 'Command `git diff --name-only does-not-exist...HEAD` failed:' to 'Command `git di
+commits flagged: 7/100 (7.0%)
+# findings >= medium by rule: assert-removed 2, assert-weakened 1, expected-changed 6, test-deleted 2
+
+=================================================================== judgements (one line per flagged commit)
+click
+c3535905 TP? (re-judged; was FP) deletes test_fish_multiline_help_complete, the only multiline-help test, while the newline escaping in FishComplete.format_completion still exists; a person should look.
+831c8f09 FP  error message format changed in src/click/{core,exceptions,parser}.py; expectations follow (the changed functions are not named in the test hunk).
+2468b709 FP  skipif(WIN, ...): a platform gate through a module constant, not one of the recognised environment probes.
+4ece17a1 FP  Choice normalisation changed in src/click/{core,types}.py; expected output updated.
+5961d31f FP  deprecated-message wording changed in src/click/core.py; expectation updated.
+d8763b93 FP  documented behaviour change (exit code 0 -> 2) in src/click/core.py; expectation updated.
+0e0c0032 FP  CliRunner stdout/stderr semantics changed; 7 asserts replaced by 3 stronger ones (net-count rule).
+pydantic-settings
+7e2dacb6 FP  skipif('validate_by_alias' not in ConfigDict.__annotations__): a pydantic-version feature gate written as a feature check.
+e9588aef FP  test rewritten as a parametrized test; the net loss of one assert is a refactor, not a weakening.
+d26fc0c3 FP  module-level pytest.skip('moto is not installed') and skipif(not aws_systems_manager): optional-dependency gates for a new source (the `not <module>` form is not recognised).
+55e9a4dc FP  repr string gained the new env_file_depth field added in the same commit.
+d357d7bf FP  skipif(yaml is None): optional-dependency gate. High since fix round 3 (S3): `yaml = None` is outside the diff, so the gate is not recognised.
+12cdb0a3 FP  same skipif(yaml is None) optional-dependency gate (S3 trade-off).
+bf443bd0 FP  same skipif(yaml is None) optional-dependency gate (S3 trade-off).
+ky (AVA: only test-deleted applies)
+7f0137dc FP  one test folded into new cross-realm tests (1 removed, 10 added).
+13c8da55 FP  behaviour deliberately removed (progress callback errors no longer surface); tests of the old behaviour deleted.
+3ded2aad FP  tests rewritten under new names in other hunks (HTTPError -> TypeError behaviour change).
+33462fcb FP  behaviour reversed (null hook list now rejected); old test replaced by a rejection test elsewhere in the file.
+6b675693 FP  validation added; 4 tests replaced by 10 under new names.
+83c711cb FP  test files consolidated (several test files deleted and their cases moved under new names).
+httpx
+eeb5e3c2 TP? test_netrc_auth_nopassword (the Python 3.11+ no-password netrc path) deleted with no source change; the message calls it unnecessary, but coverage of that path is gone.
+5dda2aa3 FP  urlescape safe set changed in httpx/_urlparse.py; expected URLs follow.
+ba2e5121 FP  percent-safe set and form-space behaviour changed in httpx/_urlparse.py; expected URLs follow.
+d293374b FP  percent escaping sets reworked after WHATWG in httpx/_urlparse.py; expected userinfo follows.
+9fd6f0ca FP  JSON body made compact in httpx/_content.py; expected bodies and Content-Length follow.
+8e36f2bc FP  deprecated SSL/proxy APIs removed; their tests go with them (the removed names are not test-body identifiers, so the feature-removal down-grade misses).
+db9072f9 FP  the test input changed too (exam%le -> exam le); only the assert line pairs, so it looks like an expected-value edit.
+a7092af2 FP  query-param quoting changed in httpx/_urlparse.py; expected URL follows.
+392dbe45 FP  zstd support added; Accept-Encoding expectations gain ", zstd".
+0006ed05 FP  formatter rewrote '\x1B' as '\x1b' (same string value; the rule compares source text).
+vitest
+77a94328 FP  error logs now show retry attempts; expected log text updated with the source change.
+34b44a36 FP  `test.use({ viewport })` (a Playwright config call) read as a test definition; UI e2e test reworked for non-virtualised lists.
+08bd93b7 FP  --since-last-run feature: the recorded-deps inline snapshots grow with the new data.
+707f8adf FP  a test turned into test.each under a new name; `.not.toReportPassedTest(...)` is in a new test (same subject and matcher as an old expect, other argument).
+a2ec4166 FP  default browser port changed in source; expected URLs follow.
+de5af293 FP  expect(...) -> expect.soft(...): expect.soft is not counted as an assertion, so it looks like 2 asserts removed.
+14921e96 FP  `git diff` now gets -z for quoted names; the expected error message follows.
+
+Summary: 37 flagged commits across 479 scanned (click 7/79, pydantic-settings 7/100, ky 6/100,
+httpx 10/100, vitest 7/100). Judged: 2 likely TP (click c3535905, httpx eeb5e3c2), 35 FP. By cause:
+expected-changed where the expected value follows a source change whose function the test does not
+name, or a changed input / reformatted literal (17), tests deleted or renamed across hunks / features
+removed (9), skip gates not recognised (6), net assert count or expect.soft (3). Changes since the round-1 run: pydantic-settings d357d7bf, 12cdb0a3 and bf443bd0
+(skipif(yaml is None)) are now low (fix 3); vitest's 9 assert-weakened FPs dropped to 1 (fix 7);
+vitest 21be412e and d523a15f (it.skip / skipIf inside runInlineTests template fixtures) and
+9697b389 (inline snapshot) are gone (fix 6). Fix 5 made the expected-changed down-grade stricter:
+vitest 08bd93b7 and 14921e96 were low in the round-1 engine and are medium now.
+
+Round 3 (2026-10-30): the stricter env-gate rules (S3, closing always-true gates such as `os is None`) made
+pydantic-settings d357d7bf, 12cdb0a3 and bf443bd0 high again (re-run on fresh clones; click 7/79 and httpx 10/100 unchanged;
+ky and vitest are JS and not affected by S3, so they were not re-run).

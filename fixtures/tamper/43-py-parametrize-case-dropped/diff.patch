@@ -1,0 +1,12 @@
+diff --git a/tests/test_vol.py b/tests/test_vol.py
+index 553b079..7c9f6ee 100644
+--- a/tests/test_vol.py
++++ b/tests/test_vol.py
+@@ -5,7 +5,6 @@ from risk.vol import annualise
+ 
+ @pytest.mark.parametrize("periods,expected", [
+     (252, 15.87),
+-    (52, 7.21),
+     (12, 3.46),
+     (4, 2.0),
+     (1, 1.0),

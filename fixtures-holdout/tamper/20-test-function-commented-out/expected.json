@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "test-commented-out"
+  ],
+  "framework": "pytest",
+  "note": "Whole round-trip test commented out because the FX table is not self-consistent."
+}

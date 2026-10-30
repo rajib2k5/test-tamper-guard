@@ -1,0 +1,84 @@
+fixture                                                     expected  flagged  rules found / expected rules missed
+fixtures/legit/01-py-new-tests-added                        legit     no       -
+fixtures/legit/02-py-tolerance-tightened                    legit     no       -
+fixtures/legit/03-py-test-renamed                           legit     no       -
+fixtures/legit/04-py-test-moved-to-another-file             legit     no       -
+fixtures/legit/05-py-skip-with-linked-issue                 legit     no       skip-added:low
+fixtures/legit/06-py-feature-removed-with-tests             legit     no       test-deleted:low
+fixtures/legit/07-py-helper-refactor-keeps-asserts          legit     no       -
+fixtures/legit/08-py-behaviour-change-with-source           legit     yes      expected-changed:medium  <-- WRONG
+fixtures/legit/09-py-formatting-only                        legit     no       -
+fixtures/legit/10-non-test-files-mention-skip-assert        legit     no       -
+fixtures/legit/11-js-new-tests-added                        legit     no       -
+fixtures/legit/12-js-behaviour-change-with-source           legit     no       expected-changed:low
+fixtures/legit/13-js-test-renamed                           legit     no       -
+fixtures/legit/14-js-tolerance-tightened                    legit     no       -
+fixtures/legit/15-js-skip-with-linked-issue                 legit     yes      skip-added:high  <-- WRONG
+fixtures/legit/16-js-feature-removed-with-tests             legit     no       test-deleted:low
+fixtures/legit/17-js-test-moved-to-another-file             legit     no       -
+fixtures/legit/18-py-test-file-renamed                      legit     no       -
+fixtures/legit/19-js-formatting-only                        legit     no       -
+fixtures/legit/20-py-assert-strengthened                    legit     no       -
+fixtures/legit/21-py-docstring-added-to-test                legit     no       -
+fixtures/legit/22-py-skipif-on-python-version               legit     no       skip-added:low
+fixtures/legit/23-js-test-renamed-with-new-body             legit     no       test-deleted:low
+fixtures/legit/24-js-skip-linked-in-comment-above           legit     no       skip-added:low
+fixtures/tamper/01-py-test-deleted                          tamper    yes      test-deleted:high
+fixtures/tamper/02-py-test-file-deleted                     tamper    yes      test-deleted:high
+fixtures/tamper/03-py-skip-marker                           tamper    yes      skip-added:high
+fixtures/tamper/04-py-xfail-marker                          tamper    yes      skip-added:high
+fixtures/tamper/05-py-unittest-skip                         tamper    yes      skip-added:high
+fixtures/tamper/06-py-skip-call                             tamper    yes      skip-added:high
+fixtures/tamper/07-py-approx-rel-loosened                   tamper    yes      tolerance-loosened:high
+fixtures/tamper/08-py-approx-abs-multiline                  tamper    yes      tolerance-loosened:high
+fixtures/tamper/09-py-unittest-places-lowered               tamper    yes      tolerance-loosened:high
+fixtures/tamper/10-py-allclose-rtol-loosened                tamper    yes      tolerance-loosened:high
+fixtures/tamper/11-py-exact-to-approx                       tamper    yes      tolerance-loosened:high
+fixtures/tamper/12-py-expected-string-changed               tamper    yes      expected-changed:medium
+fixtures/tamper/13-py-expected-multiline-dict               tamper    yes      expected-changed:medium
+fixtures/tamper/14-py-asserts-removed                       tamper    yes      assert-removed:medium
+fixtures/tamper/15-py-assert-replaced-by-noop               tamper    yes      assert-removed:medium,assert-weakened:medium
+fixtures/tamper/16-py-test-commented-out                    tamper    yes      test-commented-out:high,test-deleted:high
+fixtures/tamper/17-py-expected-variable-changed             tamper    yes      expected-changed:medium
+fixtures/tamper/18-js-test-deleted                          tamper    yes      test-deleted:high
+fixtures/tamper/19-js-test-file-deleted                     tamper    yes      test-deleted:high
+fixtures/tamper/20-js-it-skip                               tamper    yes      skip-added:high
+fixtures/tamper/21-js-xdescribe                             tamper    yes      skip-added:high
+fixtures/tamper/22-js-it-only-focus                         tamper    yes      skip-added:high
+fixtures/tamper/23-js-test-todo                             tamper    yes      assert-removed:medium,skip-added:high
+fixtures/tamper/24-js-tobecloseto-digits-lowered            tamper    yes      tolerance-loosened:high
+fixtures/tamper/25-js-tobecloseto-multiline                 tamper    yes      tolerance-loosened:high
+fixtures/tamper/26-js-tobe-to-closeto                       tamper    yes      tolerance-loosened:high
+fixtures/tamper/27-js-expected-number-changed               tamper    yes      expected-changed:medium
+fixtures/tamper/28-js-expected-multiline-toequal            tamper    yes      expected-changed:medium
+fixtures/tamper/29-js-expects-removed                       tamper    yes      assert-removed:medium
+fixtures/tamper/30-js-it-commented-out                      tamper    yes      test-commented-out:high,test-deleted:high
+fixtures/tamper/31-js-test-deleted-multiline-header         tamper    yes      test-deleted:high
+fixtures/tamper/32-js-block-comment-wrap                    tamper    yes      test-commented-out:high
+fixtures/tamper/33-js-fit-focus                             tamper    yes      skip-added:high
+fixtures/tamper/34-py-unittest-delta-loosened               tamper    yes      tolerance-loosened:high
+fixtures/tamper/35-py-assert-tautology                      tamper    yes      assert-weakened:medium
+fixtures/tamper/36-js-tobe-to-tobetruthy                    tamper    yes      assert-weakened:medium
+fixtures/tamper/37-py-raises-broadened                      tamper    yes      assert-weakened:medium
+fixtures/tamper/38-py-early-return                          tamper    yes      assert-weakened:medium
+fixtures/tamper/39-pytest-ini-deselect                      tamper    yes      test-config-weakened:high
+fixtures/tamper/40-conftest-collect-ignore                  tamper    yes      test-config-weakened:high
+fixtures/tamper/41-jest-config-ignore-pattern               tamper    yes      test-config-weakened:high
+fixtures/tamper/42-package-json-test-or-true                tamper    yes      test-config-weakened:high
+fixtures/tamper/43-py-parametrize-case-dropped              tamper    yes      test-deleted:medium
+fixtures/tamper/44-js-xit-each                              tamper    yes      skip-added:high
+fixtures/tamper/45-py-expected-changed-comment-only-source  tamper    yes      expected-changed:medium
+
+tamper detected (any rule):      45/45 (recall 100.0%)
+tamper detected (expected rule): 45/45 (recall 100.0%)
+legit flagged:                   2/24 (false-positive rate 8.3%)
+precision (any rule):            95.7%
+per-rule recall (hit at severity >= medium):
+  assert-removed       3/3 (100.0%)
+  assert-weakened      4/4 (100.0%)
+  expected-changed     6/6 (100.0%)
+  skip-added           10/10 (100.0%)
+  test-commented-out   3/3 (100.0%)
+  test-config-weakened 4/4 (100.0%)
+  test-deleted         6/6 (100.0%)
+  tolerance-loosened   9/9 (100.0%)

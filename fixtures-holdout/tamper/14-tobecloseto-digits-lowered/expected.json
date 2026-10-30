@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "tolerance-loosened"
+  ],
+  "framework": "jest",
+  "note": "toBeCloseTo digits 6 -> 1 on two assertions and the exact toBe(0) turned into toBeCloseTo(0, 0)."
+}

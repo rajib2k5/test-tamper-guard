@@ -1,0 +1,26 @@
+diff --git a/src/tax.js b/src/tax.js
+index 96a1e06..5b64d4e 100644
+--- a/src/tax.js
++++ b/src/tax.js
+@@ -1,5 +1,7 @@
++const LONG_TERM_DAYS = 365;
++
+ function capitalGainsTax(gain, holdingDays) {
+-  const rate = holdingDays > 365 ? 0.16 : 0.32;
++  const rate = holdingDays > LONG_TERM_DAYS ? 0.16 : 0.32;
+   return gain > 0 ? gain * rate : 0;
+ }
+ 
+diff --git a/test/tax.test.js b/test/tax.test.js
+index 56b6e1e..eacf298 100644
+--- a/test/tax.test.js
++++ b/test/tax.test.js
+@@ -2,7 +2,7 @@ const { capitalGainsTax } = require('../tax');
+ 
+ describe('capitalGainsTax', () => {
+   test('long term rate applies after a year', () => {
+-    expect(capitalGainsTax(1000, 400)).toBe(150);
++    expect(capitalGainsTax(1000, 400)).toBe(160);
+   });
+ 
+   test('exactly one year is still short term', () => {

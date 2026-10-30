@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "expected-changed"
+  ],
+  "framework": "jest",
+  "note": "Source change is a pure constant extraction; the test's 150 became 160 to match a stale rate."
+}

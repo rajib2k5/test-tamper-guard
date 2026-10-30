@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "Five near-identical tests folded into one it.each table with all five cases retained."
+}

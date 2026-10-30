@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "pytest",
+  "note": "Two new tests appended (constant series, parametrized length); nothing removed."
+}

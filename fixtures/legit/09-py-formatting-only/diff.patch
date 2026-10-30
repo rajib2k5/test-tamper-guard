@@ -1,0 +1,19 @@
+diff --git a/tests/test_csvtools.py b/tests/test_csvtools.py
+index e6cf345..1764b64 100644
+--- a/tests/test_csvtools.py
++++ b/tests/test_csvtools.py
+@@ -2,8 +2,12 @@ from csvtools import parse_row
+ 
+ 
+ def test_parse_row():
+-    assert parse_row('a,b,c')==['a','b','c']
++    assert parse_row("a,b,c") == [
++        "a",
++        "b",
++        "c",
++    ]
+ 
+ 
+ def test_parse_quoted():
+-    assert   parse_row('"a,b",c') == ['a,b', 'c']
++    assert parse_row('"a,b",c') == ["a,b", "c"]

@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "Deprecated legacyVol module, its re-export and its test file all deleted in one commit."
+}

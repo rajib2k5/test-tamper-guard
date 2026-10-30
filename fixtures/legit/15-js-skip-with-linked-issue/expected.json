@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "it.skip whose line carries a ticket key"
+}

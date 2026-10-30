@@ -1,0 +1,13 @@
+diff --git a/src/__tests__/geometry.test.js b/src/__tests__/geometry.test.js
+index 81ea1cd..6e3921b 100644
+--- a/src/__tests__/geometry.test.js
++++ b/src/__tests__/geometry.test.js
+@@ -2,7 +2,7 @@ import { area, circumference } from '../geometry';
+ 
+ describe('circle', () => {
+   it('computes area', () => {
+-    expect(area(1)).toBeCloseTo(3.14159, 5);
++    expect(area(1)).toBeCloseTo(3.14159265, 8);
+   });
+ 
+   it('computes circumference', () => {

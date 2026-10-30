@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "it.skip with the tracking issue URL on the comment line directly above"
+}

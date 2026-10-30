@@ -1,0 +1,13 @@
+diff --git a/src/__tests__/geometry.test.js b/src/__tests__/geometry.test.js
+index 81ea1cd..82a01d8 100644
+--- a/src/__tests__/geometry.test.js
++++ b/src/__tests__/geometry.test.js
+@@ -8,7 +8,7 @@ describe('circle', () => {
+   it('computes circumference', () => {
+     expect(circumference(1)).toBeCloseTo(
+       6.28318,
+-      5,
++      0,
+     );
+   });
+ });

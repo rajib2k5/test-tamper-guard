@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "assert-removed"
+  ],
+  "framework": "jest",
+  "note": "expect(net).toBe(4.75) replaced by expect(true).toBe(true) after the sign convention changed upstream."
+}

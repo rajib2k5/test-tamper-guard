@@ -1,0 +1,23 @@
+diff --git a/tests/test_items.py b/tests/test_items.py
+index 8eb5855..859c7ae 100644
+--- a/tests/test_items.py
++++ b/tests/test_items.py
+@@ -1,14 +1,14 @@
+-def _get(client, url):
++def get_json(client, url, status=200):
+     resp = client.get(url)
+-    assert resp.status_code == 200
++    assert resp.status_code == status, resp.text
+     return resp.json()
+ 
+ 
+ def test_list_items(client):
+-    data = _get(client, "/items")
++    data = get_json(client, "/items")
+     assert len(data) == 2
+ 
+ 
+ def test_item_detail(client):
+-    data = _get(client, "/items/1")
++    data = get_json(client, "/items/1")
+     assert data["id"] == 1

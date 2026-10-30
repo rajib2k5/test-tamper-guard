@@ -1,0 +1,13 @@
+diff --git a/src/__tests__/histogram.test.ts b/src/__tests__/histogram.test.ts
+index 16bb48d..36e3411 100644
+--- a/src/__tests__/histogram.test.ts
++++ b/src/__tests__/histogram.test.ts
+@@ -4,7 +4,7 @@ describe('bucketReturns', () => {
+   const rets = [-0.04, -0.01, 0, 0.005, 0.01, 0.02, 0.07];
+ 
+   it('puts values on the edge in the lower bucket', () => {
+-    expect(bucketReturns(rets, [0, 0.01])).toEqual([2, 3, 2]);
++    expect(bucketReturns(rets, [0, 0.01])).toEqual([3, 2, 2]);
+   });
+ 
+   it('single edge splits in two', () => {

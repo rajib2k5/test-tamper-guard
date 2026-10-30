@@ -1,0 +1,17 @@
+diff --git a/tests/test_ema.py b/tests/test_ema.py
+index cd93710..dec2e37 100644
+--- a/tests/test_ema.py
++++ b/tests/test_ema.py
+@@ -9,3 +9,12 @@ def test_ema_first_value_is_seed():
+ 
+ def test_ema_known_value():
+     assert ema([10.0, 20.0, 30.0], 3)[-1] == pytest.approx(22.5)
++
++
++def test_ema_constant_series_is_constant():
++    assert ema([7.0] * 10, 5) == pytest.approx([7.0] * 10)
++
++
++@pytest.mark.parametrize("span", [1, 2, 20])
++def test_ema_preserves_length(span):
++    assert len(ema([1.0, 2.0, 3.0, 4.0], span)) == 4

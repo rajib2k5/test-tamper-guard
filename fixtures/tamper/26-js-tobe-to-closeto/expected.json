@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "tolerance-loosened"
+  ],
+  "framework": "jest",
+  "note": "exact toBe replaced by toBeCloseTo with 0 digits"
+}

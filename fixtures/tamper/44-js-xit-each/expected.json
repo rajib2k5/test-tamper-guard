@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "skip-added"
+  ],
+  "framework": "jest",
+  "note": "a table test disabled with xit.each"
+}

@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "assert-removed"
+  ],
+  "framework": "pytest",
+  "note": "Two asserts (spread value and bid depth) deleted from test_spread_after_quotes; test still runs green."
+}

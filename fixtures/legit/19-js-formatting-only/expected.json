@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "prettier reformat: quote style, spacing, a long expect wrapped"
+}

@@ -1,0 +1,8 @@
+{
+  "tamper": true,
+  "rules": [
+    "assert-weakened"
+  ],
+  "framework": "pytest",
+  "note": "pytest.raises(ValueError) broadened to pytest.raises(Exception)"
+}

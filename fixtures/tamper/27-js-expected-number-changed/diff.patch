@@ -1,0 +1,13 @@
+diff --git a/src/count.test.ts b/src/count.test.ts
+index 33c668b..7685022 100644
+--- a/src/count.test.ts
++++ b/src/count.test.ts
+@@ -1,7 +1,7 @@
+ import { countWords } from './count';
+ 
+ test('counts words', () => {
+-  expect(countWords('a b c')).toBe(3);
++  expect(countWords('a b c')).toBe(4);
+ });
+ 
+ test('average word length', () => {

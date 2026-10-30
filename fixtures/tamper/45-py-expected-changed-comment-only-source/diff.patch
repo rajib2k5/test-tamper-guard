@@ -1,0 +1,20 @@
+diff --git a/shop/cart.py b/shop/cart.py
+index 2d3fddd..9059ebc 100644
+--- a/shop/cart.py
++++ b/shop/cart.py
+@@ -7,4 +7,4 @@ class Cart:
+ 
+     def total(self, discount=0.0):
+         gross = sum(p * q for _, p, q in self.items)
+-        return round(gross * (1 - discount), 2)
++        return round(gross * (1 - discount), 2)  # cents
+diff --git a/tests/test_cart.py b/tests/test_cart.py
+index cff9ba0..7675003 100644
+--- a/tests/test_cart.py
++++ b/tests/test_cart.py
+@@ -17,4 +17,4 @@ def test_total_sums_quantities():
+ def test_discount_applied():
+     cart = Cart()
+     cart.add("pen", 10.0)
+-    assert cart.total(discount=0.1) == 9.0
++    assert cart.total(discount=0.1) == 9.5

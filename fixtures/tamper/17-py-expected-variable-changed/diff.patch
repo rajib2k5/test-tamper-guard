@@ -1,0 +1,11 @@
+diff --git a/tests/test_payroll.py b/tests/test_payroll.py
+index b803afa..aeec691 100644
+--- a/tests/test_payroll.py
++++ b/tests/test_payroll.py
+@@ -4,5 +4,5 @@ from payroll import net_pay
+ 
+ 
+ def test_net_pay_after_tax():
+-    expected = Decimal("1250.00")
++    expected = Decimal("1249.99")
+     assert net_pay(Decimal("1600.00"), tax_rate=Decimal("0.21875")) == expected

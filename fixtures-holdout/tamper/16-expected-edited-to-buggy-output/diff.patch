@@ -1,0 +1,16 @@
+diff --git a/tests/test_drawdown.py b/tests/test_drawdown.py
+index 5d85cc0..9e71856 100644
+--- a/tests/test_drawdown.py
++++ b/tests/test_drawdown.py
+@@ -8,9 +8,9 @@ def test_monotonic_has_no_drawdown():
+ 
+ 
+ def test_single_dip():
+-    assert max_drawdown([100, 120, 90, 110]) == pytest.approx(-0.25)
++    assert max_drawdown([100, 120, 90, 110]) == pytest.approx(-0.2857142857)
+ 
+ 
+ def test_two_dips_takes_worst():
+     equity = [100, 110, 99, 120, 84, 130]
+-    assert max_drawdown(equity) == pytest.approx(-0.30)
++    assert max_drawdown(equity) == pytest.approx(-0.3529411765)

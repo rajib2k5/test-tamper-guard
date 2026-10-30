@@ -1,0 +1,11 @@
+diff --git a/tests/test_jobs.py b/tests/test_jobs.py
+index c6917d4..86cec6c 100644
+--- a/tests/test_jobs.py
++++ b/tests/test_jobs.py
+@@ -3,4 +3,5 @@ from jobs import run_job
+ 
+ def test_job_reports_ok():
+     result = run_job("nightly")
+-    assert result
++    assert result.status == "ok"
++    assert result.errors == []

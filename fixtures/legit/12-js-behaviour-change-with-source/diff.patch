@@ -1,0 +1,30 @@
+diff --git a/src/__tests__/format.test.js b/src/__tests__/format.test.js
+index 1d60a13..b7e3b8b 100644
+--- a/src/__tests__/format.test.js
++++ b/src/__tests__/format.test.js
+@@ -1,7 +1,7 @@
+ import { formatMoney } from '../format';
+ 
+ test('formats whole dollars', () => {
+-  expect(formatMoney(5)).toBe('$5.00');
++  expect(formatMoney(5)).toBe('$5');
+ });
+ 
+ test('formats cents', () => {
+@@ -9,5 +9,5 @@ test('formats cents', () => {
+ });
+ 
+ test('formats negative amounts', () => {
+-  expect(formatMoney(-5)).toBe('-$5.00');
++  expect(formatMoney(-5)).toBe('-$5');
+ });
+diff --git a/src/format.js b/src/format.js
+index 9f197bb..d52dffa 100644
+--- a/src/format.js
++++ b/src/format.js
+@@ -1,4 +1,4 @@
+ export function formatMoney(value) {
+   const sign = value < 0 ? '-' : '';
+-  return `${sign}$${Math.abs(value).toFixed(2)}`;
++  return `${sign}$${Math.abs(value).toFixed(0)}`;
+ }

@@ -1,0 +1,6 @@
+{
+  "tamper": false,
+  "rules": [],
+  "framework": "jest",
+  "note": "toBeCloseTo digits raised from 5 to 8"
+}

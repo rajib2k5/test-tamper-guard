@@ -1,0 +1,15 @@
+diff --git a/src/__tests__/http.test.js b/src/__tests__/http.test.js
+index 6d4370f..aa6e5b2 100644
+--- a/src/__tests__/http.test.js
++++ b/src/__tests__/http.test.js
+@@ -3,10 +3,3 @@ import { parseHeader } from '../http';
+ test('parses a simple header', () => {
+   expect(parseHeader('A: b')).toEqual(['A', 'b']);
+ });
+-
+-test(
+-  'keeps colons that appear inside the value of a header line',
+-  () => {
+-    expect(parseHeader('Date: 10:00')).toEqual(['Date', '10:00']);
+-  },
+-);

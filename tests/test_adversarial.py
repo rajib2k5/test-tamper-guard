@@ -100,7 +100,7 @@ def test_keyword_argument_padded_with_whitespace_is_linear():
                    ["    assert x == pytest.approx(1, rel=1%sy%d)" % (pad, i) for i in range(50)])
     t0 = time.process_time()
     analyze_diff(diff)
-    assert time.process_time() - t0 < 1.0
+    assert time.process_time() - t0 < 3.0  # ~0.35 s locally; runners are ~3x slower
 
 
 def test_unterminated_strings_full_of_escaped_quotes_are_linear():
@@ -111,4 +111,4 @@ def test_unterminated_strings_full_of_escaped_quotes_are_linear():
         news = ["    assert f(%d) == %s%s" % (i, q, body) for i in range(50)]
         t0 = time.process_time()
         analyze_diff(_paired(olds, news) + _paired(olds, news, "test/r.test.js"))
-        assert time.process_time() - t0 < 1.0, repr(body[:4])
+        assert time.process_time() - t0 < 3.0, repr(body[:4])  # ~0.5 s locally, >160 s when quadratic

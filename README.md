@@ -2,6 +2,8 @@
 
 test-tamper-guard reads a diff and flags changes that weaken tests instead of fixing the code. Examples are a new skip, a looser tolerance, a deleted test, or an expected value changed to match a bug. A person then looks at the flagged lines before the change merges. The tool does analysis only. It never edits files, never runs tests, and never runs code from your repository. It has no runtime dependencies and needs Python 3.9 or later. It reads Python (pytest, unittest) and JavaScript or TypeScript (jest, vitest) tests.
 
+![test-tamper-guard flags a loosened tolerance, a changed expected value, and a new skip in a demo commit](docs/images/02-flag-tampered.svg)
+
 ## What it detects
 
 The tool reports a finding as a rule id, a severity, a file and line, and the changed line.
@@ -18,6 +20,32 @@ The tool reports a finding as a rule id, a severity, a file and line, and the ch
 | `test-config-weakened` | Runner config that drops tests: `--deselect`, `-k`, or `--ignore` in pytest `addopts`; `collect_ignore`; `testPathIgnorePatterns`; `\|\| true` or `--passWithNoTests` on the `test` script. | high | None. |
 
 Docs/DESIGN.md has the full pattern list for each rule.
+
+## How to use
+
+Images 1 to 4 are real runs on a small demo repository. Image 5 is from this repository's own CI. `scripts/screenshots.py` makes all five.
+
+**1. Install.** Inside a virtual environment, one command installs the tool. Then `--help` lists the options.
+
+![Installing test-tamper-guard with uv pip and printing its help](docs/images/01-install.svg)
+
+**2. Flag a tampered test.** A commit loosened two tolerances, changed an expected value, and skipped a test. The tool reports each change and exits 1.
+
+![test-tamper-guard reports four findings and exits with code 1](docs/images/02-flag-tampered.svg)
+
+**3. Pass a legitimate change.** A commit added a test and tightened a tolerance. The tool reports no finding and exits 0.
+
+![test-tamper-guard reports no findings and exits with code 0](docs/images/03-legit-passes.svg)
+
+**4. Ask in Claude Code.** The hook reads an edit that adds a skip marker. It returns the decision `ask` and the reason.
+
+![The Claude Code hook returns an ask decision for an edit that adds pytest.mark.skip](docs/images/04-claude-hook.svg)
+
+**5. See annotations in CI.** The GitHub Action shows each finding as an annotation on the workflow run. This run is from this repository's first pull request, which added test fixtures that contain skip markers on purpose. The last item is a runner notice from GitHub, not from the tool.
+
+![GitHub Actions annotations from test-tamper-guard on this repository's fixture files, plus one GitHub runner notice](docs/images/05-action-annotations.png)
+
+To make the images again, run `uv run --with rich --with playwright python scripts/screenshots.py`.
 
 ## Install and use the CLI
 
